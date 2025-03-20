@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <title>Fun Converter</title>
+    <style>
+        body {
+            font-family: 'Choplin', 'cursive';
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background-color: #708090;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+        img {
+            max-width: 120px;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px;
+            width: 90%;
+            max-width: 600px;
+        }
+        h2 {
+            color: #778899;
+        }
+        input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #778899;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #a9a9a9;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #778899;
+        }
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="my logo.jpg" alt="Logo">
+    <h1>MAJESTA'S FUN DIGIT CONVERTER:)</h1>
+</header>
+
+<div class="container">
+    <h2>Decimal to Binary</h2>
+    <input type="number" id="decToBinInput" placeholder="Enter Decimal">
+    <button onclick="convertDecToBin()">Compute</button>
+    <div class="result" id="decToBinResult"></div>
+</div>
+
+<script>
+ function convertDecToBin() {
+        let decimal = document.getElementById("decToBinInput").value;
+        if (decimal === "") {
+            document.getElementById("decToBinResult").innerText = "Please enter a valid number";
+            return;
+        }
+        let binary = Number(decimal).toString(2);
+        document.getElementById("decToBinResult").innerText = "Binary: " + binary;
+    }
+</script>
+
+<div class="container">
+    <h2>Binary to Decimal</h2>
+    <input type="text" id="binToDecInput" placeholder="Enter Binary">
+    <button onclick="convertBinToDec()">Compute</button>
+    <div class="result" id="binToDecResult"></div>
+</div>
+
+<script>
+    function convertBinToDec() {
+        let binary = document.getElementById("binToDecInput").value;
+        if (!/^[01]+$/.test(binary)) {
+            document.getElementById("binToDecResult").innerText = "Please enter a valid binary number";
+            return;
+        }
+        let decimal = parseInt(binary, 2);
+        document.getElementById("binToDecResult").innerText = "Decimal: " + decimal;
+    }
+   </script>
+
+<div class="container">
+    <h2>Hex to Binary</h2>
+    <input type="text" id="hexToBinInput" placeholder="Enter Hexadecimal">
+    <button onclick="convertHexToBin()">Compute</button>
+    <div class="result" id="hexToBinResult"></div>
+</div>
+
+<script>
+    function convertHexToBin() {
+        let hex = document.getElementById("hexToBinInput").value.trim();
+        if (!/^[0-9a-fA-F]+$/.test(hex)) {
+            document.getElementById("hexToBinResult").innerText = "Please enter a valid hexadecimal number";
+            return;
+        }
+        let binary = parseInt(hex, 16).toString(2);
+        document.getElementById("hexToBinResult").innerText = "Binary: " + binary;
+    }
+
+</script>
+
+<div class="container">
+    <h2>Binary to Hex</h2>
+    <input type="text" id="binToHexInput" placeholder="Enter Binary">
+    <button onclick="convertBinToHex()">Compute</button>
+    <div class="result" id="binToHexResult"></div>
+</div>
+
+<script>
+  function convertBinToHex() {
+        let binary = document.getElementById("binToHexInput").value.trim();
+        if (!/^[01]+$/.test(binary)) {
+            document.getElementById("binToHexResult").innerText = "Please enter a valid binary number";
+            return;
+        }
+        let hex = parseInt(binary, 2).toString(16).toUpperCase();
+        document.getElementById("binToHexResult").innerText = "Hexadecimal: " + hex;
+    }  
+</script>
+
+<div class="container">
+    <h2>Decimal to Hex</h2>
+    <input type="number" id="decToHexInput" placeholder="Enter Decimal">
+    <button onclick="convertDecToHex()">Compute</button>
+    <div class="result" id="decToHexResult"></div>
+</div>
+
+<script>
+    function convertDecToHex() {
+        let decimal = document.getElementById("decToHexInput").value.trim();
+        if (decimal === "" || isNaN(decimal)) {
+            document.getElementById("decToHexResult").innerText = "Please enter a valid decimal number";
+            return;
+        }
+        let hex = parseInt(decimal, 10).toString(16).toUpperCase();
+        document.getElementById("decToHexResult").innerText = "Hexadecimal: " + hex;
+    }
+</script>
+
+<div class="container">
+    <h2>Hex to Decimal</h2>
+    <input type="text" id="hexToDecInput" placeholder="Enter Hexadecimal">
+    <button onclick="convertHexToDec()">Compute</button>
+    <div class="result" id="hexToDecResult"></div>
+</div>
+
+<script>
+    function convertHexToDec() {
+        let hex = document.getElementById("hexToDecInput").value.trim();
+        if (hex === "" || !/^[0-9A-Fa-f]+$/.test(hex)) {
+            document.getElementById("hexToDecResult").innerText = "Please enter a valid hexadecimal number";
+            return;
+        }
+        let decimal = parseInt(hex, 16);
+        document.getElementById("hexToDecResult").innerText = "Decimal: " + decimal;
+    }
+</script>
+
+<div class="container">
+    <h2>Binary to One's Complement</h2>
+    <input type="text" id="binToOnesInput" placeholder="Enter Binary">
+    <button onclick="convertBinToOnes()">Computer</button>
+    <div class="result" id="binToOnesResult"></div>
+</div>
+
+<script>
+    function convertBinToOnes() {
+        let binary = document.getElementById("binToOnesInput").value.trim();
+        if (binary === "" || !/^[01]+$/.test(binary)) {
+            document.getElementById("binToOnesResult").innerText = "Please enter a valid binary number";
+            return;
+        }
+        let onesComplement = binary.split('').map(bit => bit === '0' ? '1' : '0').join('');
+        document.getElementById("binToOnesResult").innerText = "One's Complement: " + onesComplement;
+    }
+</script>
+
+
+<div class="container">
+    <h2>One's Complement to Binary</h2>
+    <input type="text" id="onesInputToBin" placeholder="Enter One's complement">
+    <button onclick="convertOnesToBin()">Compute</button>
+    <div class="result" id="onesToBinResult"></div>
+</div>
+
+<script>
+    function convertOnesToBin() {
+        let onesComplement = document.getElementById("onesInputToBin").value.trim();
+        let result = onesComplementToBinary(onesComplement);
+        document.getElementById("onesToBinResult").innerText = result;
+    }
+    
+    function onesComplementToBinary(onesComplement) {
+        // Validate input: Ensure it only contains 0s and 1s
+        if (!/^[01]+$/.test(onesComplement)) {
+            return "Invalid input. Please enter a valid one's complement number.";
+        }
+        
+        // Convert one's complement to binary (inverting bits)
+        let binary = "";
+        for (let i = 0; i < onesComplement.length; i++) {
+            binary += onesComplement[i] === '0' ? '1' : '0';
+        }
+        
+        // Convert binary string to integer
+        let decimalValue = parseInt(binary, 2);
+        return `Binary Equivalent: ${binary} (Decimal: ${decimalValue})`;
+    }
+</script>
+
+<div class="container">
+    <h2>Binary to Two's Complement</h2>
+    <input type="text" id="BinInputToTwos" placeholder="Enter Binary">
+    <button onclick="convertBinToTwos()">Compute</button>
+    <div class="result" id="BinToTwosResult"></div>
+</div>
+
+<script>
+    function convertBinToTwos() {
+        let binary = document.getElementById("BinInputToTwos").value.trim();
+        let result = binaryToTwosComplement(binary);
+        document.getElementById("BinToTwosResult").innerText = result;
+    }
+    
+    function binaryToTwosComplement(binary) {
+        // Validate input: Ensure it only contains 0s and 1s
+        if (!/^[01]+$/.test(binary)) {
+            return "Invalid input. Please enter a valid binary number.";
+        }
+        
+        // Find one's complement (invert bits)
+        let onesComplement = "";
+        for (let i = 0; i < binary.length; i++) {
+            onesComplement += binary[i] === '0' ? '1' : '0';
+        }
+        
+        // Add 1 to get two's complement
+        let twosComplement = (BigInt("0b" + onesComplement) + BigInt(1)).toString(2);
+        
+        // Ensure result has the same bit-length as input
+        while (twosComplement.length < binary.length) {
+            twosComplement = "0" + twosComplement;
+        }
+        
+        return `Two's Complement: ${twosComplement}`;
+    }
+</script>
+
+<div class="container">
+    <h2>Two's Complement to Binary</h2>
+    <input type="text" id="TwosInputToBin" placeholder="Enter Two's complement">
+    <button onclick="convertTwosToBin()">Compute</button>
+    <div class="result" id="TwostoBinResult"></div>
+</div>
+
+<script>
+    function convertTwosToBin() {
+        let twosComplement = document.getElementById("TwosInputToBin").value.trim();
+        let result = twosComplementToBinary(twosComplement);
+        document.getElementById("TwostoBinResult").innerText = result;
+    }
+    
+    function twosComplementToBinary(twosComplement) {
+        // Validate input: Ensure it only contains 0s and 1s
+        if (!/^[01]+$/.test(twosComplement)) {
+            return "Invalid input. Please enter a valid two's complement number.";
+        }
+        
+        // Convert two's complement to binary by subtracting 1 and inverting bits
+        let binaryValue = (BigInt("0b" + twosComplement) - BigInt(1)).toString(2);
+        
+        // Invert bits to get back to original one's complement
+        let onesComplement = "";
+        for (let i = 0; i < binaryValue.length; i++) {
+            onesComplement += binaryValue[i] === '0' ? '1' : '0';
+        }
+        
+        return `Binary Equivalent: ${onesComplement}`;
+    }
+</script>
+
+<div class="container">
+    <h2>One's Complement to Two's Complement</h2>
+    <input type="text" id="OnesInputToTwos" placeholder="Enter Ones's complement">
+    <button onclick="convertOnesToTwos()">Compute</button>
+    <div class="result" id="OnestoTwosResult"></div>
+</div>
+
+<script>
+    function convertOnesToTwos() {
+        let onesComplement = document.getElementById("OnesInputToTwos").value.trim();
+        let result = onesComplementToTwosComplement(onesComplement);
+        document.getElementById("OnestoTwosResult").innerText = result;
+    }
+    
+    function onesComplementToTwosComplement(onesComplement) {
+        // Validate input: Ensure it only contains 0s and 1s
+        if (!/^[01]+$/.test(onesComplement)) {
+            return "Invalid input. Please enter a valid one's complement number.";
+        }
+        
+        // Convert one's complement to two's complement by adding 1
+        let twosComplement = (BigInt("0b" + onesComplement) + BigInt(1)).toString(2);
+        
+        // Ensure result has the same bit-length as input
+        while (twosComplement.length < onesComplement.length) {
+            twosComplement = "0" + twosComplement;
+        }
+        
+        return `Two's Complement: ${twosComplement}`;
+    }
+</script>
+
+<div class="container">
+    <h2>Two's Complement to One's Complement</h2>
+    <input type="text" id="TwosInputToOnes" placeholder="Enter Two's complement">
+    <button onclick="convertTwosToOnes()">Compute</button>
+    <div class="result" id="TwostoOnesResult"></div>
+</div>
+
+<script>
+    function convertTwosToOnes() {
+        let twosComplement = document.getElementById("TwosInputToOnes").value.trim();
+        let result = twosComplementToOnesComplement(twosComplement);
+        document.getElementById("TwostoOnesResult").innerText = result;
+    }
+    
+    function twosComplementToOnesComplement(twosComplement) {
+        // Validate input: Ensure it only contains 0s and 1s
+        if (!/^[01]+$/.test(twosComplement)) {
+            return "Invalid input. Please enter a valid two's complement number.";
+        }
+        
+        // Subtract 1 from two's complement
+        let onesComplement = (BigInt("0b" + twosComplement) - BigInt(1)).toString(2);
+        
+        // Ensure it has the same bit-length as input
+        while (onesComplement.length < twosComplement.length) {
+            onesComplement = "0" + onesComplement;
+        }
+        
+        // Invert bits to get one's complement
+        let result = "";
+        for (let i = 0; i < onesComplement.length; i++) {
+            result += onesComplement[i] === '0' ? '1' : '0';
+        }
+        
+        return `One's Complement: ${result}`;
+    }
+</script>
+</body>
+</html>
+
